@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Banner profilo GitHub</title>
+<!--
+  Sorgente del banner del profilo GitHub (assets/banner.png, 2560x640).
+  Per rigenerarlo, dalla radice del repository:
+
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+    --headless=new --disable-gpu --hide-scrollbars \
+    --force-device-scale-factor=2 --default-background-color=00000000 \
+    --window-size=1280,320 --screenshot=assets/banner.png \
+    "file://$PWD/assets/banner.html"
+-->
+<style>
+  :root {
+    --text: #eef3f8;
+    --muted: #8294a8;
+    --accent: #3fe081;
+    --teal: #2dd4bf;
+    --amber: #e5c07b;
+    --border: #1e2936;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+  html, body { margin: 0; background: transparent; }
+
+  .banner {
+    position: relative;
+    width: 1280px;
+    height: 320px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    font-family: var(--mono);
+    color: var(--text);
+    background:
+      radial-gradient(620px 320px at 88% -20%, rgba(63, 224, 129, .17), transparent 70%),
+      radial-gradient(520px 260px at 4% 125%, rgba(45, 212, 191, .10), transparent 70%),
+      linear-gradient(180deg, #0c131a 0%, #080c11 100%);
+  }
+
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+    background-size: 32px 32px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 90% at 62% 45%, #000 20%, transparent 75%);
+            mask-image: radial-gradient(ellipse 70% 90% at 62% 45%, #000 20%, transparent 75%);
+  }
+
+  .watermark {
+    position: absolute; left: 22px; top: 50%;
+    transform: translateY(-52%);
+    font-size: 290px; font-weight: 800; line-height: 1;
+    letter-spacing: -.08em;
+    color: rgba(63, 224, 129, .045);
+  }
+
+  .label {
+    position: absolute; left: 60px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px; letter-spacing: .34em; line-height: 1.9;
+    color: var(--muted);
+  }
+  .label::after {
+    content: ""; display: block;
+    width: 40px; height: 2px; margin-top: 10px;
+    background: var(--accent);
+  }
+
+  .content {
+    position: absolute; left: 300px; right: 50px; top: 0; bottom: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+  }
+
+  .prompt { font-size: 15px; color: var(--accent); margin-bottom: 14px; }
+  .prompt span { color: var(--muted); }
+
+  h1 {
+    margin: 0;
+    font-size: 48px; line-height: 1.14; font-weight: 800;
+    letter-spacing: -.03em;
+  }
+  h1 .hl {
+    background: linear-gradient(90deg, var(--accent) 0%, var(--teal) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .cursor {
+    display: inline-block;
+    width: .52em; height: .86em;
+    margin-left: .14em; vertical-align: -.06em;
+    background: var(--teal);
+  }
+
+  .chips {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 8px; margin-top: 24px;
+  }
+  .chip {
+    --c: 255, 255, 255;
+    font-size: 13px; font-weight: 600; line-height: 1;
+    padding: 6px 12px; border-radius: 999px;
+    color: rgb(var(--c));
+    border: 1px solid rgba(var(--c), .42);
+    background: rgba(var(--c), .09);
+  }
+
+  .line {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--accent) 28%, var(--teal) 58%, var(--amber) 84%, transparent 100%);
+  }
+
+  .spark { position: absolute; color: var(--accent); line-height: 1; }
+  .s1 { right: 46px; top: 30px; font-size: 26px; opacity: .9; }
+  .s2 { right: 42px; bottom: 74px; font-size: 13px; opacity: .6; color: var(--teal); }
+  .s3 { left: 262px; bottom: 60px; font-size: 11px; opacity: .45; }
+</style>
+</head>
+<body>
+  <div class="banner">
+    <div class="grid"></div>
+    <div class="watermark">BI</div>
+
+    <div class="label">BARTOLO ILLIANO<br>DAL 2003</div>
+
+    <div class="content">
+      <div class="prompt">bartolo@illiano:~$ <span>whoami</span></div>
+      <h1>Fractional CTO<br><span class="hl">con 23 anni di esperienza.</span><span class="cursor"></span></h1>
+      <div class="chips">
+        <span class="chip" style="--c: 155, 165, 214">PHP</span>
+        <span class="chip" style="--c: 120, 196, 104">Node.js</span>
+        <span class="chip" style="--c: 99, 155, 235">TypeScript</span>
+        <span class="chip" style="--c: 240, 205, 90">Python</span>
+        <span class="chip" style="--c: 70, 200, 230">Go</span>
+        <span class="chip" style="--c: 110, 165, 215">MySQL</span>
+        <span class="chip" style="--c: 70, 160, 240">Docker</span>
+        <span class="chip" style="--c: 245, 150, 70">Cloudflare</span>
+        <span class="chip" style="--c: 175, 150, 250">AI</span>
+        <span class="chip" style="--c: 210, 218, 228">Cordova</span>
+      </div>
+    </div>
+
+    <span class="spark s1">✦</span>
+    <span class="spark s2">✦</span>
+    <span class="spark s3">✦</span>
+    <div class="line"></div>
+  </div>
+</body>
+</html>
